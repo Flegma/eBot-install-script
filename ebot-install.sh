@@ -90,7 +90,7 @@ if [[ -e /home/ebot/ebot-csgo/config/config.ini ]]; then
 	done
 else
 	clear
-	echo 'Welcome to Ebot 3.2 installer by vince52'
+	echo 'Welcome to Ebot 3.2 installer by Flegma'
 	echo ""
 	# Some questions for users
 	echo "I need to ask you a few questions before starting the setup"
