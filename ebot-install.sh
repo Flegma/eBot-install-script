@@ -1,11 +1,9 @@
 #!/bin/bash
-# Installer for Ebot-CSGO and Ebot-WEB by Vince52
+# Installer for Ebot-CSGO and Ebot-WEB by Flegma
 
 # This script will work on Debian and Ubuntu
-# This is not bullet-proof. So I'm not responsible
-# of anything if you use this script.
-# If you see anything wrong, please let me know here:
-# http://forum.esport-tools.net/d/94-ebot-auto-install-script
+# This is the fork of the Vince52 script
+# This script was modified so that it can work on new Ubuntu 16.04 LTS
 
 
 # Detect Debian users running the script with "sh" instead of bash
@@ -128,7 +126,7 @@ else
 	# 3) INSTALL PHP
 	
 	# If PHP is already installed, removing it.
-	apt-get autoremove php5 php5-dev php5-cli php php-dev php-cli -y
+	apt-get autoremove php php-dev php-cli php php-dev php-cli -y
 	#if [ $? != 0 ]; then
 	#	echo "(LINE 126) There is an error. Are you running apt application somewhere?"
 	#	echo "Can you check your debian source list?"
@@ -153,10 +151,10 @@ else
 	./configure
 	make
 	make install
-	echo 'date.timezone = Europe/Paris' >> /usr/local/lib/php.ini
+	echo 'date.timezone = Europe/Zagreb' >> /usr/local/lib/php.ini
 	echo 'extension=pthreads.so' >> /usr/local/lib/php.ini
 	
-	apt-get install libapache2-mod-php5 php5-curl -y
+	apt-get install libapache2-mod-php php-curl -y
 	if [ $? != 0 ]; then
 		echo "(LINE 162) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
@@ -287,20 +285,19 @@ KO3_METHOD = "restart" ; restart or csay or esl
 DEMO_DOWNLOAD = true ; true or false :: whether gotv demos will be downloaded from the gameserver after matchend or not
 REMIND_RECORD = false ; true will print the 3x "Remember to record your own POV demos if needed!" messages, false will not
 DAMAGE_REPORT = true; true will print damage reports at end of round to players, false will not
+USE_DELAY_END_RECORD = true ; use the tv_delay to record postpone the tv_stoprecord & upload
 [MAPS]
 MAP[] = "de_cache"
-MAP[] = "de_season"
+MAP[] = "de_inferno"
 MAP[] = "de_dust2"
 MAP[] = "de_nuke"
-MAP[] = "de_inferno"
+MAP[] = "de_overpass"
 MAP[] = "de_train"
 MAP[] = "de_mirage"
-MAP[] = "de_cbble"
-MAP[] = "de_overpass"
 [WORKSHOP IDs]
 [Settings]
 COMMAND_STOP_DISABLED = false
-RECORD_METHOD = "matchstart" ; matchstart or knifestart
+RECORD_METHOD = "knifestart" ; matchstart or knifestart
 DELAY_READY = true' > /home/ebot/ebot-csgo/config/config.ini
 
 
@@ -363,8 +360,8 @@ all:
 	#ASK USER USERNAME AND PASSWORD
 	echo "THE LAST QUESTION: I need a username and a password for ebot"
 	read -p "Username: " -e -i admin EBOTUSER
-	read -p "Username: " -e -i password EBOTPASSWORD
-	php symfony guard:create-user --is-super-admin admin@ebot $EBOTUSER $EBOTPASSWORD
+	read -p "Password: " -e -i password EBOTPASSWORD
+	php symfony guard:create-user --is-super-admin flegma@gmail.com $EBOTUSER $EBOTPASSWORD
 	
 	# 7) CONFIG APACHE
 	a2enmod rewrite
@@ -433,10 +430,10 @@ DocumentRoot /home/ebot/ebot-web/web
 	
 	# 8) Start/Stop ebot daemon
 	
-	cd /home/install
-	wget https://raw.githubusercontent.com/vince52/eBot-initscript/master/ebotv3; mv ebotv3 /etc/init.d/ebot && chmod +x /etc/init.d/ebot
-	service ebot start
-	/etc/init.d/ebot start
+	#cd /home/install
+	#wget https://raw.githubusercontent.com/vince52/eBot-initscript/master/ebotv3; mv ebotv3 /etc/init.d/ebot && chmod +x /etc/init.d/ebot
+	#service ebot start
+	#/etc/init.d/ebot start
 	
 	
 	# 9) SECURITY ??? (COMING SOON)
