@@ -210,7 +210,7 @@ else
 		mysql -u root -p$rootpasswd -e "FLUSH PRIVILEGES;"
 	fi
 	
-	apt-get install php5-mysql -y
+	apt-get install php-mysql -y
 	if [ $? != 0 ]; then
 		echo "(LINE 213) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
@@ -430,10 +430,10 @@ DocumentRoot /home/ebot/ebot-web/web
 	
 	# 8) Start/Stop ebot daemon
 	
-	#cd /home/install
-	#wget https://raw.githubusercontent.com/vince52/eBot-initscript/master/ebotv3; mv ebotv3 /etc/init.d/ebot && chmod +x /etc/init.d/ebot
-	#service ebot start
-	#/etc/init.d/ebot start
+	cd /home/install
+	wget https://raw.githubusercontent.com/Flegma/eBot-initscript/master/ebotv3 && mv ebotv3 /etc/init.d/ebot && chmod +x /etc/init.d/ebot
+	service ebot start
+	/etc/init.d/ebot start
 	
 	
 	# 9) SECURITY ??? (COMING SOON)
