@@ -210,7 +210,7 @@ else
 		mysql -u root -p$rootpasswd -e "FLUSH PRIVILEGES;"
 	fi
 	
-	apt-get install php-mysql -y
+	apt-get install php5.6-mysql -y
 	if [ $? != 0 ]; then
 		echo "(LINE 213) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
