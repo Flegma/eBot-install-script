@@ -151,8 +151,8 @@ else
 	./configure
 	make
 	make install
-	echo 'date.timezone = Europe/Zagreb' >> /usr/local/lib/php.ini
-	echo 'extension=pthreads.so' >> /usr/local/lib/php.ini
+	echo 'date.timezone = Europe/Zagreb' >> /etc/php/5.6/cli/php.ini
+	echo 'extension=pthreads.so' >> /etc/php/5.6/cli/php.ini
 	
 	apt-get install libapache2-mod-php5.6 php5.6-curl -y
 	if [ $? != 0 ]; then
