@@ -137,14 +137,14 @@ else
 	# COMPILE AND INSTALL THE NEW PHP VERSION:
 	mkdir /home/install
 	cd /home/install
-	wget http://be2.php.net/get/php-5.6.37.tar.bz2/from/this/mirror -O php-5.6.37.tar.bz2
+	wget --no-check-certificate http://be2.php.net/get/php-5.6.37.tar.bz2/from/this/mirror -O php-5.6.37.tar.bz2
 	tar -xjvf php-5.6.37.tar.bz2
 	cd php-5.6.37
 	./configure --prefix /usr/local --with-mysql --enable-maintainer-zts --enable-sockets --with-openssl --with-pdo-mysql 
 	make
 	make install
 	cd /home/install
-	wget http://pecl.php.net/get/pthreads-2.0.10.tgz
+	wget --no-check-certificate http://pecl.php.net/get/pthreads-2.0.10.tgz
 	tar -xvzf pthreads-2.0.10.tgz
 	cd pthreads-2.0.10
 	/usr/local/bin/phpize
@@ -224,7 +224,7 @@ else
 	
 	mkdir /home/ebot
 	cd /home/ebot
-	wget https://github.com/deStrO/eBot-CSGO/archive/master.zip
+	wget --no-check-certificate https://github.com/deStrO/eBot-CSGO/archive/master.zip
 	unzip master.zip
 	mv eBot-CSGO-master ebot-csgo
 	cd ebot-csgo
@@ -307,7 +307,7 @@ DELAY_READY = true' > /home/ebot/ebot-csgo/config/config.ini
 	
 	cd /home/ebot
 	rm -R master*
-	wget https://github.com/deStrO/eBot-CSGO-Web/archive/master.zip
+	wget --no-check-certificate https://github.com/deStrO/eBot-CSGO-Web/archive/master.zip
 	unzip master.zip
 	mv eBot-CSGO-Web-master ebot-web
 	cd ebot-web
@@ -431,7 +431,7 @@ DocumentRoot /home/ebot/ebot-web/web
 	# 8) Start/Stop ebot daemon
 	
 	cd /home/install
-	wget https://raw.githubusercontent.com/Flegma/eBot-initscript/master/ebotv3 && mv ebotv3 /etc/init.d/ebot && chmod +x /etc/init.d/ebot
+	wget --no-check-certificate https://raw.githubusercontent.com/Flegma/eBot-initscript/master/ebotv3 && mv ebotv3 /etc/init.d/ebot && chmod +x /etc/init.d/ebot
 	service ebot start
 	/etc/init.d/ebot start
 	
