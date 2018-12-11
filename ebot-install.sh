@@ -116,7 +116,7 @@ else
 	
 	# 2) Install SERVER-REQUIREMENTS
 	apt-get update
-	apt-get install apache2 gcc make libxml2-dev autoconf ca-certificates unzip nodejs curl libcurl4-openssl-dev pkg-config libssl-dev screen -y
+	apt-get install apache2 gcc make libxml2-dev autoconf ca-certificates unzip nodejs curl libcurl4-openssl-dev pkg-config screen -y
 	if [ $? != 0 ]; then
 		echo "(LINE 126) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
@@ -137,10 +137,11 @@ else
 	# COMPILE AND INSTALL THE NEW PHP VERSION:
 	mkdir /home/install
 	cd /home/install
-	wget --no-check-certificate http://be2.php.net/get/php-5.6.37.tar.bz2/from/this/mirror -O php-5.6.37.tar.bz2
-	tar -xjvf php-5.6.37.tar.bz2
-	cd php-5.6.37
-	./configure --prefix /usr/local --with-mysql --enable-maintainer-zts --enable-sockets --with-openssl --with-pdo-mysql 
+	wget --no-check-certificate http://be2.php.net/get/php-5.6.38.tar.bz2/from/this/mirror -O php-5.6.38.tar.bz2
+	tar -xjvf php-5.6.38.tar.bz2
+	cd php-5.6.38
+	./buildconf --force
+	./configure --prefix /usr/local --with-mysql --enable-maintainer-zts --enable-sockets --with-openssl --with-pdo-mysql
 	make
 	make install
 	cd /home/install
@@ -152,7 +153,9 @@ else
 	make
 	make install
 	echo 'date.timezone = Europe/Zagreb' >> /etc/php/5.6/cli/php.ini
+	echo 'date.timezone = Europe/Zagreb' >> /etc/php/5.6/apache2/php.ini
 	echo 'extension=pthreads.so' >> /etc/php/5.6/cli/php.ini
+	echo 'extension=pthreads.so' >> /etc/php/5.6/apache2/php.ini
 	
 	apt-get install libapache2-mod-php5.6 php5.6-curl -y
 	if [ $? != 0 ]; then
