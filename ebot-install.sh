@@ -123,6 +123,7 @@ else
 		echo "ABORT"
 		exit
 	fi
+	source /etc/apache2/envvars
 	# 3) INSTALL PHP
 	
 	# If PHP is already installed, removing it.
@@ -230,7 +231,7 @@ else
 	unzip master.zip
 	mv eBot-CSGO-master ebot-csgo
 	cd ebot-csgo
-	curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
+	#curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
 	
 	apt-get install -y nodejs npm
 	if [ $? != 0 ]; then
@@ -429,6 +430,10 @@ DocumentRoot /home/ebot/ebot-web/web
 
 		a2ensite ebotv3.conf
 	fi
+
+	wget --no-check-certificate https://raw.githubusercontent.com/Flegma/php5.conf/master/php5.conf 
+	cp php5.conf /etc/apache2/mods-available/php5.conf
+    ln -s /etc/apache2/mods-available/php5.conf /etc/apache2/mods-enabled/php5.conf
 	
 	service apache2 reload
 	
@@ -436,8 +441,8 @@ DocumentRoot /home/ebot/ebot-web/web
 	
 	cd /home/install
 	wget --no-check-certificate https://raw.githubusercontent.com/Flegma/eBot-initscript/master/ebotv3 && mv ebotv3 /etc/init.d/ebot && chmod +x /etc/init.d/ebot
-	service ebot start
-	/etc/init.d/ebot start
+	service ebot restart
+	#/etc/init.d/ebot start
 	
 	
 	# 9) SECURITY ??? (COMING SOON)
