@@ -232,7 +232,7 @@ else
 	cd ebot-csgo
 	curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -
 	
-	apt-get install -y nodejs
+	apt-get install -y nodejs npm
 	if [ $? != 0 ]; then
 		echo "(LINE 232) There is an error. Are you running apt application somewhere?"
 		echo "Can you check your debian source list?"
@@ -240,6 +240,8 @@ else
 		exit
 	fi
 	
+	npm -g install n
+	n 0.12
 	npm install socket.io@0.9.12 archiver@0.4.10 formidable
 	curl -sS https://getcomposer.org/installer | php
 	php composer.phar install
