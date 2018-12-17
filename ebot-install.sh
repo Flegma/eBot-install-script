@@ -31,7 +31,9 @@ fi
 IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 if [[ "$IP" = "" ]]; then
 		echo '1'
-		IP=$(wget -qO- api.ipify.org)
+		#IP=$(wget -qO- api.ipify.org) - old ip checker that does not work with AWS
+		IP=$(wget -qO- checkip.amazonaws.com)
+		
 fi
 
 if [[ -e /home/ebot/ebot-csgo/config/config.ini ]]; then
@@ -251,7 +253,7 @@ else
 	php composer.phar install
 	# Command line of my ebot guide: cp config/config.ini.smp config/config.ini
 	
-	EXTERNALIP=$(wget -qO- ipv4.icanhazip.com)
+	EXTERNALIP=$(wget -qO- checkip.amazonaws.com)
 	EXTIP=""
 	if [[ "$IP" != "$EXTERNALIP" ]]; then
 		echo ""
