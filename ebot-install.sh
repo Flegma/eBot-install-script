@@ -156,7 +156,8 @@ else
 	make install
 	echo 'date.timezone = Europe/Zagreb' >> /usr/local/lib/php.ini
 	echo 'extension=pthreads.so' >> /usr/local/lib/php.ini
-	
+	service apache2 restart
+
 	#apt-get install libapache2-mod-php5.6 php5.6-curl -y
 	#if [ $? != 0 ]; then
 	#	echo "(LINE 162) There is an error. Are you running apt application somewhere?"
@@ -244,7 +245,9 @@ else
 	npm -g install n
 	n 0.12
 	npm install socket.io@0.9.12 archiver@0.4.10 formidable
-	curl -sS https://getcomposer.org/installer | php
+	wget --no-check-certificate https://getcomposer.org/download/1.8.0/composer.phar
+	export COMPOSER_HOME=/root
+	chmod +x composer.phar
 	php composer.phar install
 	# Command line of my ebot guide: cp config/config.ini.smp config/config.ini
 	
