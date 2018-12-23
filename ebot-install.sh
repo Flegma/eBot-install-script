@@ -281,8 +281,8 @@ MYSQL_USER = "ebotv3"
 MYSQL_PASS = "'$SQLPASSWORDEBOTV3'"
 MYSQL_BASE = "ebotv3"
 [Config]
-#DONT USE THIS, USE LOCALHOST IP - BOT_IP = "'$IP'"
-BOT_IP = "127.0.0.1"
+BOT_IP = "'$IP'"
+#BOT_IP = "127.0.0.1"
 BOT_PORT = 12360
 EXTERNAL_LOG_IP = "'$EXTIP'" ; use this in case your server isnt binded with the external IP (behind a NAT)
 MANAGE_PLAYER = 1
@@ -334,8 +334,8 @@ DELAY_READY = true' > /home/ebot/ebot-csgo/config/config.ini
   # true or false, whether demos will be downloaded by the ebot server
   # the demos can be downloaded at the matchpage, if it's true
   demo_download: true
-  #DONT USE THIS, USE LOCALHOST IP - ebot_ip: "$IP"
-  ebot_ip: "127.0.0.1"
+  ebot_ip: "$IP"
+  #ebot_ip: "127.0.0.1"
   ebot_port: 12360
   # lan or net, it's to display the server IP or the GO TV IP
   # net mode display only started match on home page
