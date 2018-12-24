@@ -28,13 +28,21 @@ fi
 
 # Try to get our IP from the system and fallback to the Internet.
 # CHECK NAT
-#dont use this on AWS because it will get private IP instead of public :) IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
-if [[ "$IP" = "" ]]; then
+echo "Will you run eBot online or for LAN?"
+echo "   1) Online"
+echo "   2) LAN"
+read -p "your choice [1-2]: " -e -i 1 ONLINEORLAN
+if [[ "$ONLINEORLAN" -eq 2 ]]; then
+	IP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
+else
+	IP=""
+	if [[ "$IP" = "" ]]; then
 		echo '1'
 		#IP=$(wget -qO- api.ipify.org) - old ip checker that does not work with AWS
 		IP=$(wget -qO- checkip.amazonaws.com)
 		
-fi
+    fi
+fi	
 
 if [[ -e /home/ebot/ebot-csgo/config/config.ini ]]; then
 	while :
