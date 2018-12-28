@@ -289,8 +289,8 @@ MYSQL_USER = "ebotv3"
 MYSQL_PASS = "'$SQLPASSWORDEBOTV3'"
 MYSQL_BASE = "ebotv3"
 [Config]
-#BOT_IP = "'$IP'"
-BOT_IP = "127.0.0.1"
+BOT_IP = "'$IP'"
+#BOT_IP = "127.0.0.1"
 BOT_PORT = 12360
 EXTERNAL_LOG_IP = "'$EXTIP'" ; use this in case your server isnt binded with the external IP (behind a NAT)
 MANAGE_PLAYER = 1
