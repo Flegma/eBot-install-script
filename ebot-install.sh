@@ -113,7 +113,7 @@ else
 	echo "Install ebot on sub domain or not?"
 	echo "   1) On my own Sub-domain"
 	echo "   2) On my public IP"
-	read -p "your choice [1-2]: " -e -i 1 SUBORIP
+	read -p "your choice [1-2]: " -e -i 2 SUBORIP
 	echo ""
 	if [[ "$SUBORIP" -eq 1 ]]; then
 		echo "Finally, tell me your sub-domain you where you want to install ebot"
@@ -152,7 +152,7 @@ else
 	tar -xjvf php-5.6.38.tar.bz2
 	cd php-5.6.38
 	./buildconf --force
-	./configure --prefix /usr/local --with-mysql --enable-maintainer-zts --enable-sockets --with-openssl --with-pdo-mysql --with-apxs2=/usr/bin/apxs
+	./configure --prefix /usr/local --with-mysql --with-curl --enable-maintainer-zts --enable-sockets --with-openssl --with-pdo-mysql --with-apxs2=/usr/bin/apxs
 	cp php.ini-production /usr/local/lib/php.ini
 	make
 	make install
