@@ -307,6 +307,7 @@ DAMAGE_REPORT = true; true will print damage reports at end of round to players,
 USE_DELAY_END_RECORD = true ; use the tv_delay to record postpone the tv_stoprecord & upload
 [MAPS]
 MAP[] = "de_cache"
+MAP[] = "de_vertigo"
 MAP[] = "de_inferno"
 MAP[] = "de_dust2"
 MAP[] = "de_nuke"
