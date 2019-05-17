@@ -152,7 +152,7 @@ else
 	tar -xjvf php-5.6.38.tar.bz2
 	cd php-5.6.38
 	./buildconf --force
-	./configure --prefix /usr/local --with-mysql --with-curl --enable-maintainer-zts --enable-sockets --with-openssl --with-pdo-mysql --with-apxs2=/usr/bin/apxs
+	./configure --prefix /usr/local --with-mysql --with-curl --enable-maintainer-zts --enable-mbstring --enable-sockets --with-openssl --with-pdo-mysql --with-apxs2=/usr/bin/apxs
 	cp php.ini-production /usr/local/lib/php.ini
 	make
 	make install
